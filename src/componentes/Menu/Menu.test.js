@@ -1,26 +1,27 @@
-import { render, screen } from "@testing-library/react";
-import Menu from "./index";
+import { render, screen } from '@testing-library/react';
+import Menu from './index';
 
-test("Deve renderizar um link para a página inicial", () => {
+test('Deve renderizar um link para a página inicial', () => {
   render(<Menu />);
-  const linkElement = screen.getByText("Inicial");
-  expect(linkElement).toBeInTheDocument();
+  const linkPaginaInicial = screen.getByText('Inicial');
+  expect(linkPaginaInicial).toBeInTheDocument();
 });
 
-test("Deve renderizar uma lista de links", () => {
+test('Deve renderizar uma lista de links', () => {
   render(<Menu />);
-  const listaLInks = screen.getAllByRole("link");
-  expect(listaLInks).toHaveLength(4);
+  const listaDeLinks = screen.getAllByRole('link');
+  expect(listaDeLinks).toHaveLength(4);
 });
-test("Não deve renderizar o link para Extrato", () => {
+
+test('Não deve renderizar o link para Extrato', () => {
   render(<Menu />);
-  const linkExtrato = screen.queryByText("Extrato");
+  const linkExtrato = screen.queryByText('Extrato');
   expect(linkExtrato).not.toBeInTheDocument();
 });
 
-test("Deve renderizar uma lista de links com a classe link", () => {
+test('Deve renderizar uma lista de links com a classe link', () => {
   render(<Menu />);
-  const links = screen.getAllByRole("link");
-  links.forEach((link) => expect(link).toHaveClass("link"));
+  const links = screen.getAllByRole('link');
+  links.forEach((link) => expect(link).toHaveClass('links'));
   expect(links).toMatchSnapshot();
 });
